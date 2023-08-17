@@ -36,9 +36,14 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area={"main"} paddingX="10px">
-        {/* onSelectedPlatform={(platform) => setSelectedPlatform(platform)} */}
-        <PlatformSelector />
-        <GameGrid selectedGenre={selectedGenre} />
+        <PlatformSelector
+          onSelectedPlatform={(platform) => setSelectedPlatform(platform)}
+          selectedPlatform={selectedPlatform}
+        />
+        <GameGrid
+          selectedGenre={selectedGenre}
+          selectedPlatform={selectedPlatform}
+        />
       </GridItem>
     </Grid>
   );
