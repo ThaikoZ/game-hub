@@ -1,5 +1,7 @@
+import { Button, ButtonGroup } from "@chakra-ui/react";
+
 function App() {
-  return <h1>Clean up</h1>;
+  return <Button colorScheme="blue">Clean up</Button>;
 }
 
 export default App;
