@@ -17,12 +17,12 @@ interface Props {
 }
 
 const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
-  const { data, isLoading, error } = useGenres();
+  const { data, error, isLoading } = useGenres();
   const skeletons = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
   ];
 
-  if (error) return null;
+  if (error) return;
   //if (isLoading) return <Spinner />;
 
   return (
@@ -37,7 +37,7 @@ const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
               <GenreListSkeleton />
             </GenreListContainer>
           ))}
-        {data.map((genre) => (
+        {data?.results.map((genre) => (
           <GenreListContainer key={genre.id}>
             <ListItem>
               <HStack paddingY="5px">
