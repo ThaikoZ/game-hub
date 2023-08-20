@@ -31,7 +31,15 @@ const useGames = (gameQuery: GameQuery, { pageSize }: QueryPage) => {
       },
     });
   return useInfiniteQuery<FetchResponse<Game>, Error>({
-    queryKey: ["games", gameQuery],
+    queryKey: [
+      "games",
+      {
+        genre: gameQuery.genre?.name,
+        platform: gameQuery.platform?.name,
+        search: gameQuery.searchText,
+        sort: gameQuery.sortOrder,
+      },
+    ],
     queryFn: fetchData,
     getNextPageParam: (lastPage, allPages) => {
       return lastPage.next ? allPages.length + 1 : undefined;
