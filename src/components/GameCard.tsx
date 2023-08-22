@@ -4,14 +4,20 @@ import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-url";
 import Emoji from "./Emoji";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   game: Game;
 }
 
 const GameCard = ({ game }: Props) => {
+  const navigate = useNavigate();
+
   return (
-    <Card>
+    <Card
+      onClick={() => navigate(`/games/${game.id}`)}
+      _hover={{ cursor: "pointer" }}
+    >
       <Image src={getCroppedImageUrl(game.background_image)} />
       <CardBody>
         <HStack justifyContent="space-between" marginBottom={3}>
