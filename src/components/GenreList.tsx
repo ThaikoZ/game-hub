@@ -10,13 +10,11 @@ import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 import GenreListSkeleton from "./GenreListSkeleton";
 import GenreListContainer from "./GenreListContainer";
+import useGameQueryStore from "../store";
 
-interface Props {
-  onSelectedGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
-}
-
-const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
+const GenreList = () => {
+  const selectedGenre = useGameQueryStore((s) => s.gameQuery.genre);
+  const setGenre = useGameQueryStore((s) => s.setGenre);
   const { data, error, isLoading } = useGenres();
   const skeletons = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
@@ -47,7 +45,7 @@ const GenreList = ({ onSelectedGenre, selectedGenre }: Props) => {
                   src={getCroppedImageUrl(genre.image_background)}
                 />
                 <Button
-                  onClick={() => onSelectedGenre(genre)}
+                  onClick={() => setGenre(genre)}
                   fontSize="lg"
                   variant="link"
                   overflow="hidden"
