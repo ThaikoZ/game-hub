@@ -22,9 +22,9 @@ const HomePage = () => {
           <GenreList />
         </GridItem>
       </Show>
-      <GridItem area={"main"} paddingX="10px">
+      <GridItem area={"main"}>
         <GameHeading />
-        <HStack marginBottom={5} spacing={5}>
+        <HStack marginBottom={5} spacing={5} marginX={2}>
           <PlatformSelector />
           <SortSelector />
         </HStack>
